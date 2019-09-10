@@ -1,13 +1,14 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.TreeSet;
 
 public class Main {
     public static void main(String[] args) {
-        String[] letters = {"A AA", "B BB","E EE","K KK","M MM","H HH","O OO","P PP","C CC","T TT","У УУ","X XX"};
+        String[] letters = {"А АА", "В ВВ","Е ЕЕ","К КК","М ММ","Н НН","О ОО","Р РР","С СС","Т ТТ","У УУ","Х ХХ"};
         ArrayList<String> regions = new ArrayList<>();
         ArrayList<Integer> numbers = new ArrayList<>();
-        HashSet<String> coolNumber = new HashSet<>();
+        TreeSet<String> coolNumber = new TreeSet<>();
 
         for (Integer i = 1; i <= 198 ; i++) {
             if (i < 10)
@@ -24,14 +25,14 @@ public class Main {
                 numbers.add(i);
             }
         }
-        numbers.add(799);
-        numbers.add(759);
-        numbers.add(777);
+        regions.add("799");
+        regions.add("759");
+        regions.add("777");
 
         for (int k = 0; k < regions.size() ; k++) {
             for (int i = 0; i < numbers.size(); i++) {
                 for (int j = 0; j < letters.length; j++) {
-                    coolNumber.add(letters[j].replaceAll(" ", numbers.get(i).toString() + regions.get(k)));
+                    coolNumber.add((letters[j].replaceAll(" ", numbers.get(i).toString()).concat(regions.get(k))));
 
                 }
 
@@ -39,8 +40,10 @@ public class Main {
         }
 
 
-
-
+        for (var number : coolNumber)
+        {
+            System.out.println(number);
+        }
         System.out.println(coolNumber.size());
     }
 }
